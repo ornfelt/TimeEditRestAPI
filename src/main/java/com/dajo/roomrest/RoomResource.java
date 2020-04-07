@@ -36,13 +36,15 @@ public class RoomResource {
     	return repo.getRoom(id);
 	}
     
+    // currently not in use
+    /*
     @POST
     @Path("room")
     public Room createRoom(Room r) {
     	System.out.println(r);
     	repo.create(r);
     	return r;
-    }
+    }*/
     
     @GET
     @Path("name/{name}")
