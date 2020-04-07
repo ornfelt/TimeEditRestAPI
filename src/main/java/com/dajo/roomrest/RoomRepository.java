@@ -42,14 +42,6 @@ public class RoomRepository {
 			ex.printStackTrace();
 		}
 		HttpUtility.disconnect();
-		String[] tempString = { "Test", "booking" };
-
-		// two test rooms
-		Room room = new Room(1, "01", "01", "01", "01", tempString);
-		Room room2 = new Room(1, "02", "02", "02", "02", tempString);
-
-		rooms.add(room);
-		rooms.add(room2);
 	}
 	
 	/**
