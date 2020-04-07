@@ -47,7 +47,7 @@ public class RoomResource {
     @GET
     @Path("name/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public Room getRoom(@PathParam("name")String name) {
+	public List<Room> getRoom(@PathParam("name")String name) {
     	System.out.println("getRoomName called");
     	return repo.getRoomName(name);
 	}

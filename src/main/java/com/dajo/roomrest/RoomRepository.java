@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 public class RoomRepository {
 
 	List<Room> rooms;
+	List<Room> specificRooms;
 	
 	public RoomRepository() {
 		rooms = new ArrayList<>();
@@ -87,13 +88,19 @@ public class RoomRepository {
 		rooms.add(r);
 	}
 	
-	//method that returns room name
-	public Room getRoomName(String name) {
+	//method that returns bookings with given room name
+	public List<Room> getRoomName(String name) {
+		specificRooms = new ArrayList<>();
+		try {
 		for(Room r : rooms) {
 			if(r.getName().equals(name)) {
-				return r;
+				specificRooms.add(r);
 			}
 		}
-		return null;
+		}catch(NullPointerException e) {
+			//test rooms/bookings with no name will cast exception
+			System.out.println("Nullpointer when getting bookings with specific name.");
+		}
+		return specificRooms;
 	}
 }
