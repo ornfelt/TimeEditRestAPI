@@ -93,7 +93,7 @@ public class RoomRepository {
 		specificRooms = new ArrayList<>();
 		try {
 		for(Room r : rooms) {
-			if(r.getName().equals(name)) {
+			if(r.getName().toLowerCase().equals(name.toLowerCase())) {
 				specificRooms.add(r);
 			}
 		}
