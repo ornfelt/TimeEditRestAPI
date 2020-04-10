@@ -9,8 +9,9 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * 
- * @author Jonas Ornfelt This is a repository for room objects. Currently
- *         without a real database.
+ * @author Jonas Ornfelt, Daniel Arnesson 
+ * This is a repository for room objects. 
+ * Currently without a real database.
  *
  */
 
@@ -27,7 +28,8 @@ public class RoomRepository {
 	public RoomRepository() {
 		rooms = new ArrayList<>();
 
-		String requestURL = "https://cloud.timeedit.net/uu/web/schema/ri12Y693Y23063QQ26Z552690558655965396351Y855X85X896X2658815856960969XY788256655YY85X76597553YX95X132Y16Y53X678656662559Q7.json";
+		String requestURL = "https://cloud.timeedit.net/uu/web/schema/ri62Y693Y23062QQ96Z552690558655965336351Y855X85X896X2859865816967168XY668856735YY25X06597555YX95X132Y96Y83Q67Z65f0620f9Q6Q76Xd8nQ50ZZ785vyZ6Y55XQcto42ZY0CQ138FAF01Ct108900518087794E9170FABD1.json";
+		// OLD LINK String requestURL = "https://cloud.timeedit.net/uu/web/schema/ri12Y693Y23063QQ26Z552690558655965396351Y855X85X896X2658815856960969XY788256655YY85X76597553YX95X132Y16Y53X678656662559Q7.json";
 		// try to send get request to given url
 		try {
 			HttpUtility.sendGetRequest(requestURL);
@@ -99,13 +101,6 @@ public class RoomRepository {
 		// return new room if no room is found with given id
 		return new Room(id, "01", "02", "03", "04", tempString);
 	}
-
-	
-	// creates room, currently not in use.
-	/*
-	public void create(Room r) {
-		rooms.add(r);
-	} */
 
 	/**
 	 * Method which returns bookings with given room name

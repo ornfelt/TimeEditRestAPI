@@ -10,7 +10,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("rooms")
+/**
+ * 
+ * @author Jonas Ornfelt, Daniel Arnesson 
+ * Returns JSON or XML data about reservations, depending on request.
+ *
+ */
+
+@Path("reservations")
 public class RoomResource {
 	
 	RoomRepository repo = new RoomRepository();
@@ -29,25 +36,15 @@ public class RoomResource {
 	}
     
     @GET
-    @Path("room/{id}")
+    @Path("id/{id}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Room getRoom(@PathParam("id")int id) {
     	System.out.println("getRoom called");
     	return repo.getRoom(id);
 	}
     
-    // currently not in use
-    /*
-    @POST
-    @Path("room")
-    public Room createRoom(Room r) {
-    	System.out.println(r);
-    	repo.create(r);
-    	return r;
-    }*/
-    
     @GET
-    @Path("name/{name}")
+    @Path("room/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public List<Room> getRoom(@PathParam("name")String name) {
     	System.out.println("getRoomName called");

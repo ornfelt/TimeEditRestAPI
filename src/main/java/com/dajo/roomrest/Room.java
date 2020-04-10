@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * @author Jonas Ornfelt
+ * Room object
+ *
+ */
 public class Room {
 	
 	private int id;
