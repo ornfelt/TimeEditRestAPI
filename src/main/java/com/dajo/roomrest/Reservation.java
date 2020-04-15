@@ -20,6 +20,7 @@ public class Reservation {
 	private String[] columns;
 	//name variable is set manually
 	private String[] name;
+	//boolean that reveals if the reservation contains only one room or not
 	private boolean soloRoom = false;
 	
 	public Reservation(int id, String starttime, String startdate, String endtime, String enddate, String[] columns) {
@@ -77,11 +78,13 @@ public class Reservation {
 	public void setName() {
 		String[] roomNames = {"C11", "C13", "C15", "Flundran", "Rauken", "Änget", "Backsippan", "Heden", "Myren"};
 		int roomsAmount = 0;
+		//column[0] contains all values and needs to be changed to an actual array
+		this.columns = this.columns[0].split(",");
 		
 		try {
 			//hard coded solution to fix spelling error. Justified since no general solution is needed
 			/*
-			
+			 * OLD SOLUTION (FOR OTHER REQUESTURL)
 			if(columns[0].equals("Ã„nget")) {
 				this.name = "Änget";
 			} else if(columns[0] == null) {
@@ -92,20 +95,40 @@ public class Reservation {
 			}
 			*/
 			
-			for(int i = 0; i < columns.length; i++) {
+			//counts amount of different rooms found
+			System.out.println("columns.length: " + this.columns.length);
+			System.out.println("columns[0]: " + this.columns[0]);
+			System.out.println("roomNames[0]: " + roomNames[0]);
+			
+			for(int i = 0; i < this.columns.length; i++) {
 				for(int j = 0; j < roomNames.length; j++) {
 					
 					if(columns[i].equals(roomNames[j])) {
 						roomsAmount++;
+						System.out.println("roomsAmount++");
+					}
+				}
+			}
+			System.out.println("No rooms found...");
+			
+			//sets new string array that will contain names found
+			String[] names = new String[roomsAmount];
+			int namesCounter = 0;
+			
+			//add names found from roomNames to the new name-array
+			for(int i = 0; i < this.columns.length; i++) {
+				for(int j = 0; j < roomNames.length; j++) {
+					
+					if(this.columns[i].equals(roomNames[j])) {
+						names[namesCounter] = roomNames[j];
+						namesCounter++;
 					}
 				}
 			}
 			
-			if(roomsAmount > 1) {
-				
-			}
-			
-			
+			//sets values
+			if(roomsAmount == 1)soloRoom = true;
+			this.name = names;
 		}
 		catch(NullPointerException e) {
 			System.out.println("Null pointer when setting name.");
@@ -116,6 +139,6 @@ public class Reservation {
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", startTime=" + starttime + ", startDate=" + startdate + ", endTime=" + endtime
-				+ ", endDate=" + enddate + ", columns=" + Arrays.toString(columns) + ", name="+ name[0] + "]";
+				+ ", endDate=" + enddate + ", columns=" + Arrays.toString(columns) + ", name="+ Arrays.toString(name) + "]";
 	}
 }
