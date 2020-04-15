@@ -6,11 +6,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
- * @author Jonas Ornfelt
+ * @author Jonas Ornfelt, Daniel Arnesson
  * Room object
  *
  */
-public class Room {
+public class Reservation {
 	
 	private int id;
 	private String starttime;
@@ -19,9 +19,10 @@ public class Room {
 	private String enddate;
 	private String[] columns;
 	//name variable is set manually
-	private String name;
+	private String[] name;
+	private boolean soloRoom = false;
 	
-	public Room(int id, String starttime, String startdate, String endtime, String enddate, String[] columns) {
+	public Reservation(int id, String starttime, String startdate, String endtime, String enddate, String[] columns) {
 		super();
 		this.id = id;
 		this.starttime = starttime;
@@ -32,7 +33,7 @@ public class Room {
 	}
 	
 	//no args constructor
-	public Room() {}
+	public Reservation() {}
 	
 	public int getId() {
 		return id;
@@ -70,11 +71,12 @@ public class Room {
 	public void setColumns(String[] columns) {
 		this.columns = columns;
 	}
-	public String getName() {
+	public String[] getName() {
 		return name;
 	}
 	public void setName() {
 		String[] roomNames = {"C11", "C13", "C15", "Flundran", "Rauken", "Änget", "Backsippan", "Heden", "Myren"};
+		int roomsAmount = 0;
 		
 		try {
 			//hard coded solution to fix spelling error. Justified since no general solution is needed
@@ -90,11 +92,23 @@ public class Room {
 			}
 			*/
 			
-			for(int)
+			for(int i = 0; i < columns.length; i++) {
+				for(int j = 0; j < roomNames.length; j++) {
+					
+					if(columns[i].equals(roomNames[j])) {
+						roomsAmount++;
+					}
+				}
+			}
+			
+			if(roomsAmount > 1) {
+				
+			}
+			
 			
 		}
 		catch(NullPointerException e) {
-			System.out.println("Null pointer when setting name");
+			System.out.println("Null pointer when setting name.");
 		}
 	}
 	
@@ -102,6 +116,6 @@ public class Room {
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", startTime=" + starttime + ", startDate=" + startdate + ", endTime=" + endtime
-				+ ", endDate=" + enddate + ", columns=" + Arrays.toString(columns) + ", name="+ name + "]";
+				+ ", endDate=" + enddate + ", columns=" + Arrays.toString(columns) + ", name="+ name[0] + "]";
 	}
 }

@@ -18,9 +18,9 @@ import javax.ws.rs.core.MediaType;
  */
 
 @Path("reservations")
-public class RoomResource {
+public class ReservationResource {
 	
-	RoomRepository repo = new RoomRepository();
+	ReservationRepository repo = new ReservationRepository();
 
 	/**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -30,23 +30,23 @@ public class RoomResource {
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public List<Room> getRooms() {
+	public List<Reservation> getRooms() {
     	System.out.println("getRooms called");
-    	return repo.getRooms();
+    	return repo.getReservations();
 	}
     
     @GET
     @Path("id/{id}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public Room getRoom(@PathParam("id")int id) {
-    	System.out.println("getRoom called");
-    	return repo.getRoom(id);
+	public Reservation getReservation(@PathParam("id")int id) {
+    	System.out.println("getReservation called");
+    	return repo.getReservations(id);
 	}
     
     @GET
     @Path("room/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public List<Room> getRoom(@PathParam("name")String name) {
+	public List<Reservation> getReservation(@PathParam("name")String name) {
     	System.out.println("getRoomName called");
     	return repo.getRoomName(name);
 	}
