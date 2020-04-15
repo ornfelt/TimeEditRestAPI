@@ -109,8 +109,10 @@ public class ReservationRepository {
 		specificReservations = new ArrayList<>();
 		try {
 			for (Reservation r : reservations) {
-				if (r.getName()[0].toLowerCase().equals(name.toLowerCase())) {
-					specificReservations.add(r);
+				for(int i = 0; i < r.getName().length; i++) {
+					if (r.getName()[i].toLowerCase().equals(name.toLowerCase())) {
+						specificReservations.add(r);
+					}
 				}
 			}
 		} catch (NullPointerException e) {
