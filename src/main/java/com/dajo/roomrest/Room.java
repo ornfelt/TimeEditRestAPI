@@ -74,16 +74,24 @@ public class Room {
 		return name;
 	}
 	public void setName() {
+		String[] roomNames = {"C11", "C13", "C15", "Flundran", "Rauken", "Änget", "Backsippan", "Heden", "Myren"};
+		
 		try {
 			//hard coded solution to fix spelling error. Justified since no general solution is needed
-			if(columns[4].equals("Ã„nget")) {
+			/*
+			
+			if(columns[0].equals("Ã„nget")) {
 				this.name = "Änget";
-			} else if(columns[4] == null) {
+			} else if(columns[0] == null) {
 				this.name = "Inget namn hittades";
 			}
 			else {
-				this.name = columns[4];
+				this.name = columns[0];
 			}
+			*/
+			
+			for(int)
+			
 		}
 		catch(NullPointerException e) {
 			System.out.println("Null pointer when setting name");
