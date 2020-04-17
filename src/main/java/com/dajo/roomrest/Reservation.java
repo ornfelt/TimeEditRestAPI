@@ -2,7 +2,7 @@ package com.dajo.roomrest;
 
 import java.util.Arrays;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.annotation.*;
 
 /**
  * 
@@ -76,7 +76,7 @@ public class Reservation {
 		return name;
 	}
 	public void setName() {
-		String[] roomNames = {"C11", "C13", "C15", "Flundran", "Rauken", "Änget", "Ã„nget", "Backsippan", "Heden", "Myren"};
+		String[] roomNames = {"C11", "C13", "C15", "Flundran", "Rauken", "Änget", "Backsippan", "Heden", "Myren"};
 		int roomsAmount = 0;
 		//column[0] contains all values and needs to be changed to an actual array
 		this.columns = this.columns[0].split(", ");
@@ -101,10 +101,7 @@ public class Reservation {
 				for(int j = 0; j < roomNames.length; j++) {
 					
 					if(this.columns[i].equals(roomNames[j])) {
-						if(roomNames[j] == "Ã„nget") {
-							//set name to correct spelled version instead
-							names[namesCounter] = roomNames[j-1];
-						}else {
+						 {
 						names[namesCounter] = roomNames[j];
 						}
 						namesCounter++;
