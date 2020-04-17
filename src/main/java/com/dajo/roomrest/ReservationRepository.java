@@ -115,6 +115,7 @@ public class ReservationRepository {
 				for(int i = 0; i < r.getName().length; i++) {
 					if (r.getName()[i].toLowerCase().equals(name.toLowerCase())) {
 						specificReservations.add(r);
+						//fix for formatting with room: Änget
 					}else if(r.getName()[i].toLowerCase().equals(",,änget") && name.toLowerCase().equals(",,änget")){
 						specificReservations.add(r);
 					}
