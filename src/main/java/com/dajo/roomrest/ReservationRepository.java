@@ -100,7 +100,7 @@ public class ReservationRepository {
 				return r;
 			}
 		}
-		String[] tempString = { "No", "Reservation", "Found" };
+		String[] tempString = { "No", "Reservation", "Found", "With", "That", "id" };
 		// Return new room if no room is found with given id
 		return new Reservation(id, "01", "02", "03", "04", tempString);
 	}
