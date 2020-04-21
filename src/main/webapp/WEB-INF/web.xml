@@ -23,6 +23,18 @@
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
         <url-pattern>/index.jsp*</url-pattern>
+    </servlet-mapping>
+	<servlet>
+        <servlet-name>Roomrest</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.dajo.roomrest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	<servlet-mapping>
+        <servlet-name>Roomrest</servlet-name>
 		<url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>
