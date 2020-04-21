@@ -11,4 +11,18 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>/axis2-web/index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.dajo.roomrest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <url-pattern>/index.jsp*</url-pattern>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
 </web-app>
