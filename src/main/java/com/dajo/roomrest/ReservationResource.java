@@ -1,5 +1,4 @@
-package com.dajo.TimeEditRestAPI;
-
+package com.dajo.roomrest
 import java.util.List;
 
 import javax.ws.rs.GET;
