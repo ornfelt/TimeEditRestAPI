@@ -1,4 +1,4 @@
-package com.dajo.roomrest
+package com.dajo.roomrest;
 import java.util.List;
 
 import javax.ws.rs.GET;
