@@ -1,4 +1,4 @@
-package com.dajo.roomrest;
+package com.dajo.TimeEditRestAPI;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
  *
  */
 
-@Path("reservations")
+@Path("")
 public class ReservationResource {
 	
 	ReservationRepository repo;
