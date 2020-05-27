@@ -68,7 +68,9 @@ public class ReservationResource {
     @Path("room/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Response getReservation(@PathParam("name")String name) {
-    	
+    	if(name.toLowerCase().equals("anget")) {
+    		name = "änget";
+    	}
     	List<Reservation> rList = repo.getRoomName(name);
     	builder = Response.ok(rList);  
     	builder.cacheControl(cc);  
