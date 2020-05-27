@@ -68,6 +68,7 @@ public class ReservationResource {
     @Path("room/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Response getReservation(@PathParam("name")String name) {
+    	//fix spelling errors (required for low level Android API's)
     	if(name.toLowerCase().equals("anget")) {
     		name = "änget";
     	}
@@ -76,6 +77,19 @@ public class ReservationResource {
     	builder.cacheControl(cc);  
     	
     	System.out.println("getRoomName called");
+    	return builder.build();
+	}
+    
+    @GET
+    @Path("roomnames")
+    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public Response getRoomNames() {
+    	
+    	List<String> namesList = repo.getAllRoomNames();
+    	builder = Response.ok(namesList);  
+    	builder.cacheControl(cc);
+    	
+    	System.out.println("getRoomNames called");
     	return builder.build();
 	}
 }

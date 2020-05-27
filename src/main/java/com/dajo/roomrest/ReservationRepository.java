@@ -2,7 +2,11 @@ package com.dajo.roomrest;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+
 import com.google.gson.*;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
@@ -115,7 +119,7 @@ public class ReservationRepository {
 				for(int i = 0; i < r.getName().length; i++) {
 					if (r.getName()[i].toLowerCase().equals(name.toLowerCase())) {
 						specificReservations.add(r);
-						//fix for formatting with room: Änget
+						//fix for formatting with room: "Änget"
 					}else if(r.getName()[i].toLowerCase().equals(",,änget") && name.toLowerCase().equals(",,änget")){
 						specificReservations.add(r);
 					}
@@ -126,5 +130,27 @@ public class ReservationRepository {
 			System.out.println("Nullpointer when getting bookings with specific name.");
 		}
 		return specificReservations;
+	}
+	
+	/**
+	 * Get all room names available for booking
+	 */
+	public ArrayList<String> getAllRoomNames() {
+		final ArrayList <String> roomNames = new ArrayList<String>();
+
+		// Search list for room names
+		for (Reservation r : reservations) {
+			String[] rNames = r.getName();
+			for(String name : rNames) {
+				// add room name if it's not in list already
+				if(!roomNames.contains(name)) {
+					roomNames.add(name);
+				}
+			}
+		}
+		Collections.sort(roomNames);
+		
+		// Return list containing unique room names
+		return roomNames;
 	}
 }
